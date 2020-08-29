@@ -8,7 +8,8 @@ public class BaseEntity : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    
+
+    public BaseWeapon weapon;
     public Transform enemy;
     public int targetDistance = 10;
     public int outOfRange = 20;
@@ -20,6 +21,7 @@ public class BaseEntity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weapon.enemy = enemy;
         currentHealth = maxHealth;
     }
 
@@ -34,8 +36,9 @@ public class BaseEntity : MonoBehaviour
         float dist = Vector2.Distance(transform.position, enemy.position);
         if (dist <= targetDistance && dist <= outOfRange)
         {
-           // Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-           // rb.AddForce(enemy.position * speed);
+            transform.up = enemy.position - transform.position;
+            // Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+            // rb.AddForce(enemy.position * speed);
         }
     }
 

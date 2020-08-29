@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  weapon: {fileID: 7468391230241605319}
   enemy: {fileID: 0}
   targetDistance: 10
   outOfRange: 20
@@ -177,6 +178,7 @@ MonoBehaviour:
   currentAmmo: 0
   reloadPrefab: {fileID: 3306753847009154482}
   reloadTime: 1.2
+  enemy: {fileID: 0}
   canvas: {fileID: 8938714703341023426}
 --- !u!1 &7765935870119734326
 GameObject:

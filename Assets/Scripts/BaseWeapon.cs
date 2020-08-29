@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,14 +14,16 @@ public class BaseWeapon : MonoBehaviour
     
     public int maxAmmo = 10;
     public int currentAmmo = 0;
-
+    
     public BaseReload reloadPrefab;
     public float reloadTime = 1.2f;
 
+    public Transform enemy;
     private bool canShoot;
     private bool canReload = false;
     
     public Canvas canvas;
+
 
     private void Start()
     {
@@ -63,6 +66,7 @@ public class BaseWeapon : MonoBehaviour
     }
     void Shoot()
     {
+
         Vector3 pos = firePoint.position;
         pos.y += BulletYOffset;
         BaseBullet newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
