@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.Serialization;
 public class BaseWeapon : MonoBehaviour
 {
     public Transform firePoint;
-    public BaseAmmo ammo;
+    public BaseBullet bulletPrefab;
     public float BulletYOffset;
     
     public int maxAmmo = 10;
@@ -49,7 +50,6 @@ public class BaseWeapon : MonoBehaviour
     } 
 
     IEnumerator Reload(float time) {
-        
         canReload = false;
         canShoot = false;
         BaseReload newReload = Instantiate(reloadPrefab, transform.position, transform.rotation);
@@ -65,6 +65,6 @@ public class BaseWeapon : MonoBehaviour
     {
         Vector3 pos = firePoint.position;
         pos.y += BulletYOffset;
-        BaseAmmo newBullet = Instantiate(ammo, pos, firePoint.rotation);
+        BaseBullet newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
     }
 }

@@ -5,6 +5,7 @@ namespace DefaultNamespace
 {
     public class BaseReload : MonoBehaviour
     {
+        // WIP DOESNT WORK
         public Image reloadImage;
         [Range(0, 1)]
         public float reloadProgress = 0;

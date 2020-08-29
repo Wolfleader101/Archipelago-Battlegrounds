@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace
 {
-    public class BaseAmmo : MonoBehaviour
+    public class BaseBullet : MonoBehaviour
     {
         public float speed = 20f;
 
