@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -258,6 +259,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c881d67d84b8ee469d8dbcb2e2e3b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0
+  speed: 10
+  minMaxXPosition: {x: -1000, y: 1000}
+  minMaxYPosition: {x: -1000, y: 1000}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -390,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6044989433895909277, guid: fd184f93f75f6aa4aa7900b701f6a3d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6044989433895909277, guid: fd184f93f75f6aa4aa7900b701f6a3d6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -436,6 +453,10 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1553578759}
+    - target: {fileID: 6918530759551550707, guid: fd184f93f75f6aa4aa7900b701f6a3d6, type: 3}
+      propertyPath: test
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd184f93f75f6aa4aa7900b701f6a3d6, type: 3}
 --- !u!1001 &5037634212756328276
