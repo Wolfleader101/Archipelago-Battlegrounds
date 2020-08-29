@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5794467639127336268}
   bulletPrefab: {fileID: -83764678187835429, guid: add6740e20b8b954a9a3055f255dd86a, type: 3}
-  BulletYOffset: 0
+  BulletYOffset: 0.5
   maxAmmo: 10
   currentAmmo: 0
   reloadPrefab: {fileID: 3306753847009154482}
