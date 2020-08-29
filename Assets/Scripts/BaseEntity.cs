@@ -34,8 +34,8 @@ public class BaseEntity : MonoBehaviour
         float dist = Vector2.Distance(transform.position, enemy.position);
         if (dist <= targetDistance && dist <= outOfRange)
         {
-            Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-            rb.AddForce(enemy.position * speed);
+           // Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+           // rb.AddForce(enemy.position * speed);
         }
     }
 
