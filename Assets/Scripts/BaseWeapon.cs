@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseWeapon : MonoBehaviour
 {
     public Transform firePoint;
-    public BaseAmmo bulletPrefab;
+    public BaseAmmo ammo;
     public float BulletYOffset;
     
     public int maxAmmo = 10;
@@ -64,6 +65,6 @@ public class BaseWeapon : MonoBehaviour
     {
         Vector3 pos = firePoint.position;
         pos.y += BulletYOffset;
-        BaseAmmo newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
+        BaseAmmo newBullet = Instantiate(ammo, pos, firePoint.rotation);
     }
 }
