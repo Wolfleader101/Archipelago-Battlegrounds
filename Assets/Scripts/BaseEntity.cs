@@ -28,16 +28,12 @@ public class BaseEntity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
         float dist = Vector2.Distance(transform.position, enemy.position);
         if (dist <= targetDistance && dist <= outOfRange)
         {
             transform.up = enemy.position - transform.position;
             weapon.Shoot();
+
             //Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
             //rb.AddForce(enemy.position * speed);
         }

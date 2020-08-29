@@ -11,23 +11,25 @@ public class BaseWeapon : MonoBehaviour
     public Transform firePoint;
     public BaseBullet bulletPrefab;
     public float BulletYOffset;
-    
+
+    public float shootCooldown = 3f;
+    private float currentCooldown;
     public int maxAmmo = 10;
     public int currentAmmo = 0;
-    public int damage = 10;
-    
+
     public BaseReload reloadPrefab;
     public float reloadTime = 1.2f;
 
     public Transform enemy;
     private bool canShoot;
     private bool canReload = false;
-    
+
     public Canvas canvas;
 
 
     private void Start()
     {
+        currentCooldown = shootCooldown;
         canShoot = true;
         currentAmmo = maxAmmo;
     }
@@ -45,26 +47,29 @@ public class BaseWeapon : MonoBehaviour
                 Shoot();
             }
         }
-        
-        if(currentAmmo == maxAmmo) canReload = false;
 
-        if (Input.GetKeyDown ("r") && canReload == true) {
-            StartCoroutine( Reload(reloadTime) );
+        if (currentAmmo == maxAmmo) canReload = false;
+
+        if (Input.GetKeyDown("r") && canReload == true)
+        {
+            StartCoroutine(Reload(reloadTime));
         }
-    } 
+    }
 
-    IEnumerator Reload(float time) {
+    IEnumerator Reload(float time)
+    {
         canReload = false;
         canShoot = false;
         BaseReload newReload = Instantiate(reloadPrefab, transform.position, transform.rotation);
         newReload.parent = canvas;
         newReload.timeAmount = reloadTime;
-        
+
         yield return new WaitForSeconds(time);
         currentAmmo = maxAmmo;
         canShoot = true;
         canReload = true;
     }
+
     public void Shoot()
     {
         // if (currentAmmo == 0 && canReload == true)
@@ -73,7 +78,18 @@ public class BaseWeapon : MonoBehaviour
         // }
         Vector3 pos = firePoint.position;
         pos.y += BulletYOffset;
-        BaseBullet newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
-        newBullet.owner = this.gameObject.GetComponent<BaseEntity>();
+
+
+        if (currentCooldown > 0)
+        {
+            currentCooldown -= Time.deltaTime;
+
+        }
+        else if (currentCooldown <= 0)
+        {
+            BaseBullet newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
+            newBullet.owner = this.gameObject.GetComponent<BaseEntity>();
+            currentCooldown = shootCooldown;
+        }
     }
 }
