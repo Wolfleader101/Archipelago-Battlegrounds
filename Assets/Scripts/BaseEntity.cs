@@ -34,6 +34,7 @@ public class BaseEntity : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(enemy == null) return;
         float dist = Vector2.Distance(transform.position, enemy.position);
         if (dist <= targetDistance && dist <= outOfRange)
         {
