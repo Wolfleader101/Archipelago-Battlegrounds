@@ -14,6 +14,7 @@ public class BaseWeapon : MonoBehaviour
     
     public int maxAmmo = 10;
     public int currentAmmo = 0;
+    public int damage = 10;
     
     public BaseReload reloadPrefab;
     public float reloadTime = 1.2f;
@@ -64,11 +65,15 @@ public class BaseWeapon : MonoBehaviour
         canShoot = true;
         canReload = true;
     }
-    void Shoot()
+    public void Shoot()
     {
-
+        // if (currentAmmo == 0 && canReload == true)
+        // {
+        //     StartCoroutine( Reload(reloadTime) );
+        // }
         Vector3 pos = firePoint.position;
         pos.y += BulletYOffset;
         BaseBullet newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
+        newBullet.owner = this.gameObject.GetComponent<BaseEntity>();
     }
 }

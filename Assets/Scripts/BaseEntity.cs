@@ -37,8 +37,9 @@ public class BaseEntity : MonoBehaviour
         if (dist <= targetDistance && dist <= outOfRange)
         {
             transform.up = enemy.position - transform.position;
-            // Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-            // rb.AddForce(enemy.position * speed);
+            weapon.Shoot();
+            //Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+            //rb.AddForce(enemy.position * speed);
         }
     }
 
