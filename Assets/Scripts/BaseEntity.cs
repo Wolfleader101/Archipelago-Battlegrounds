@@ -15,7 +15,8 @@ public class BaseEntity : MonoBehaviour
     public int targetDistance = 10;
     public int outOfRange = 20;
     public float speed = 10;
-    
+
+    private Vector2 currentVelocity;
     // public GameObject damageEffect;
 
 
@@ -38,18 +39,34 @@ public class BaseEntity : MonoBehaviour
         float dist = Vector2.Distance(transform.position, enemy.position);
         if (dist <= targetDistance && dist <= outOfRange)
         {
-            transform.up = enemy.position - transform.position;
+            Vector3 dir = (enemy.position - transform.position).normalized;
+
+            if (dir.x > 0) // blue
+            {
+                transform.localScale = new Vector3(1, 1,1 );
+            } else if (dir.x < 0) //red
+            {
+                transform.localScale = new Vector3(-1, 1,1 );
+            }
+            
+            
+            transform.up = (enemy.position - transform.position).normalized;
             weapon.Shoot();
 
             Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
             if (currentHealth > 50)
             {
-                rb.AddForce(enemy.position * speed);
+                currentVelocity.x = dir.x * speed;
+                currentVelocity.y += Physics2D.gravity.y;
+                rb.velocity = currentVelocity;
+
             }
             else
             {
-                rb.AddForce(-enemy.position * speed);
+                currentVelocity.x = dir.x * -speed;
+                currentVelocity.y += Physics2D.gravity.y;
+                rb.velocity = currentVelocity;
             }
             
         }

@@ -156,9 +156,9 @@ MonoBehaviour:
   currentHealth: 0
   weapon: {fileID: 7468391230241605319}
   enemy: {fileID: 0}
-  targetDistance: 10
-  outOfRange: 20
-  speed: 10
+  targetDistance: 20
+  outOfRange: 30
+  speed: 1
 --- !u!114 &7468391230241605319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   firePoint: {fileID: 5794467639127336268}
   bulletPrefab: {fileID: -83764678187835429, guid: add6740e20b8b954a9a3055f255dd86a, type: 3}
   BulletYOffset: 1
-  ShootTime: 5
+  shootCooldown: 3
   maxAmmo: 10
   currentAmmo: 0
   reloadPrefab: {fileID: 3306753847009154482}
