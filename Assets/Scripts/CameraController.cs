@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public bool toggle;
     public float offset;
     public float speed;
     //x - min y - max
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!toggle) return;
         //Move camera
         if ((Input.mousePosition.x > screenWidth - offset) && transform.position.x < minMaxXPosition.y)
         {

@@ -271,10 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c881d67d84b8ee469d8dbcb2e2e3b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 0
-  speed: 10
-  minMaxXPosition: {x: 0, y: 0}
-  minMaxYPosition: {x: 0, y: 0}
+  toggle: 0
+  offset: 100
+  speed: 20
+  minMaxXPosition: {x: -10, y: 20}
+  minMaxYPosition: {x: -10, y: 20}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
