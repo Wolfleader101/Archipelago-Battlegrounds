@@ -55,19 +55,19 @@ public class BaseEntity : MonoBehaviour
 
             Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
-            if (currentHealth > 50)
-            {
-                currentVelocity.x = dir.x * speed;
-                currentVelocity.y += Physics2D.gravity.y;
-                rb.velocity = currentVelocity;
-
-            }
-            else
-            {
-                currentVelocity.x = dir.x * -speed;
-                currentVelocity.y += Physics2D.gravity.y;
-                rb.velocity = currentVelocity;
-            }
+            // if (currentHealth > 50)
+            // {
+            //     currentVelocity.x = dir.x * speed;
+            //     currentVelocity.y += Physics2D.gravity.y;
+            //     rb.velocity = currentVelocity;
+            //
+            // }
+            // else
+            // {
+            //     currentVelocity.x = dir.x * -speed;
+            //     currentVelocity.y += Physics2D.gravity.y;
+            //     rb.velocity = currentVelocity;
+            // }
             
         }
     }
