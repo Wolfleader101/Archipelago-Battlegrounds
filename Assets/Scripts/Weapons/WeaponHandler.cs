@@ -8,10 +8,12 @@ public class WeaponHandler : MonoBehaviour
 
     public Transform firePoint;
 
-    public GameObject bulletPrefab;
+    private int _currentAmmo;
+    
     // Start is called before the first frame update
     void Start()
     {
+        _currentAmmo = weapon.AmmoCapacity;
     }
 
     // Update is called once per frame
