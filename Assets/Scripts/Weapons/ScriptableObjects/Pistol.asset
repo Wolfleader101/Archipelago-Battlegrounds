@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoCapacity: 6
   fireRate: 1
+  reloadTime: 2.3
+  bulletPrefab: {fileID: 4689745996715162463, guid: add6740e20b8b954a9a3055f255dd86a, type: 3}
