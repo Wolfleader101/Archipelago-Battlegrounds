@@ -70,7 +70,7 @@
 //         _canReload = true;
 //     }
 //
-//     public virtual void Shoot()
+//     public void Shoot()
 //     {
 //         // if (currentAmmo == 0 && canReload == true)
 //         // {

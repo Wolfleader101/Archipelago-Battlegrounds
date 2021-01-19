@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3339306808489183513}
   - component: {fileID: 9182088646410176200}
-  - component: {fileID: -83764678187835429}
   - component: {fileID: -6968906179657894391}
   - component: {fileID: -1241062973715610701}
-  - component: {fileID: 1733224687101285826}
+  - component: {fileID: 4954119652859375008}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -86,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-83764678187835429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4689745996715162463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c1f85e6ada41cb87339b109270d79e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  rb: {fileID: -6968906179657894391}
-  damage: 30
-  owner: {fileID: 0}
 --- !u!50 &-6968906179657894391
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1733224687101285826
+--- !u!114 &4954119652859375008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,12 +131,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4689745996715162463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d93fc42451dd584499f7052c655c8bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 48b0302bca90d134c80e53249cae2aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  weapon: {fileID: 0}
-  enemy: {fileID: 0}
-  targetDistance: 10
-  outOfRange: 20
+  bullet: {fileID: 11400000, guid: 8ceb8b3fa71ab7545a1596cef763583d, type: 2}
+  rb: {fileID: -6968906179657894391}
