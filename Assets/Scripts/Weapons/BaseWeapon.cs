@@ -10,47 +10,47 @@ public class BaseWeapon : MonoBehaviour
 {
     public Transform firePoint;
     public BaseBullet bulletPrefab;
-    public float BulletYOffset;
+    public float bulletYOffset;
 
     public float shootCooldown = 3f;
-    private float currentCooldown;
+    private float _currentCooldown;
     public int maxAmmo = 10;
     public int currentAmmo = 0;
 
     public BaseReload reloadPrefab;
     public float reloadTime = 1.2f;
 
-    public Transform enemy;
-    private bool canShoot;
-    private bool canReload = false;
+    // public Transform enemy;
+    private bool _canShoot;
+    private bool _canReload = false;
 
     public Canvas canvas;
 
 
-    public void Start()
+    protected virtual void Start()
     {
-        currentCooldown = shootCooldown;
-        canShoot = true;
+        _currentCooldown = shootCooldown;
+        _canShoot = true;
         currentAmmo = maxAmmo;
     }
 
     // Update is called once per frame
-    public void Update()
+    protected virtual void Update()
     {
         canvas.transform.rotation = Quaternion.identity;
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        if (Input.GetButtonDown("Fire1") && _canShoot)
         {
             currentAmmo--;
-            canReload = true;
+            _canReload = true;
             if (currentAmmo >= 0)
             {
                 Shoot();
             }
         }
 
-        if (currentAmmo == maxAmmo) canReload = false;
+        if (currentAmmo == maxAmmo) _canReload = false;
 
-        if (Input.GetKeyDown("r") && canReload == true)
+        if (Input.GetKeyDown("r") && _canReload == true)
         {
             StartCoroutine(Reload(reloadTime));
         }
@@ -58,38 +58,38 @@ public class BaseWeapon : MonoBehaviour
 
     IEnumerator Reload(float time)
     {
-        canReload = false;
-        canShoot = false;
+        _canReload = false;
+        _canShoot = false;
         BaseReload newReload = Instantiate(reloadPrefab, transform.position, transform.rotation);
         newReload.parent = canvas;
         newReload.timeAmount = reloadTime;
 
         yield return new WaitForSeconds(time);
         currentAmmo = maxAmmo;
-        canShoot = true;
-        canReload = true;
+        _canShoot = true;
+        _canReload = true;
     }
 
-    public void Shoot()
+    public virtual void Shoot()
     {
         // if (currentAmmo == 0 && canReload == true)
         // {
         //     StartCoroutine( Reload(reloadTime) );
         // }
         Vector3 pos = firePoint.position;
-        pos.y += BulletYOffset;
+        pos.y += bulletYOffset;
 
 
-        if (currentCooldown > 0)
+        if (_currentCooldown > 0)
         {
-            currentCooldown -= Time.deltaTime;
+            _currentCooldown -= Time.deltaTime;
 
         }
-        else if (currentCooldown <= 0)
+        else if (_currentCooldown <= 0)
         {
             BaseBullet newBullet = Instantiate(bulletPrefab, pos, firePoint.rotation);
             newBullet.owner = this.gameObject.GetComponent<BaseEntity>();
-            currentCooldown = shootCooldown;
+            _currentCooldown = shootCooldown;
         }
     }
 }

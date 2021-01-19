@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseBlue : BaseEntity
 {
-    void start()
+    protected override void Start()
     {
         
     }

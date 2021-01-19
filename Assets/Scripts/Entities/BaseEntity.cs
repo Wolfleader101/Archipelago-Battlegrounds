@@ -19,14 +19,15 @@ public class BaseEntity : MonoBehaviour
     public int outOfRange = 20;
     //public float speed = 10;
 
-    private Vector2 currentVelocity;
+    private Vector2 _currentVelocity;
     // public GameObject damageEffect;
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        weapon.enemy = enemy;
+        weapon = this.GetComponent<BaseWeapon>();
+        // weapon.enemy = enemy;
         currentHealth = maxHealth;
     }
 
@@ -36,7 +37,7 @@ public class BaseEntity : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(enemy == null) return;
         float dist = Vector2.Distance(transform.position, enemy.position);
