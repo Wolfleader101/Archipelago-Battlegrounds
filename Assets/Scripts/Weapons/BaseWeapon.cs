@@ -27,7 +27,7 @@ public class BaseWeapon : MonoBehaviour
     public Canvas canvas;
 
 
-    private void Start()
+    public void Start()
     {
         currentCooldown = shootCooldown;
         canShoot = true;
@@ -35,7 +35,7 @@ public class BaseWeapon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         canvas.transform.rotation = Quaternion.identity;
         if (Input.GetButtonDown("Fire1") && canShoot)

@@ -6,15 +6,18 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
+    [Header("Health")]
     public int maxHealth = 100;
     public int currentHealth;
     
+    [Header("Objects")]
     public BaseWeapon weapon;
     public Transform enemy;
     
+    [Header("Targeting")]
     public int targetDistance = 10;
     public int outOfRange = 20;
-    public float speed = 10;
+    //public float speed = 10;
 
     private Vector2 currentVelocity;
     // public GameObject damageEffect;
