@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#pragma warning disable 0649
 public class WeaponHandler : MonoBehaviour
 {
     [SerializeField] private BaseWeapon weapon;
@@ -21,7 +21,7 @@ public class WeaponHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shoot();
+      //  Shoot();
     }
 
     public void Shoot()
