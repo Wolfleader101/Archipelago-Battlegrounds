@@ -164,6 +164,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 3418050657623505172, guid: fbed270ab283af34c9d9704979d1316e, type: 3}
+      propertyPath: point
+      value: 
+      objectReference: {fileID: 929130247134097970, guid: 1eee6e66526e21e4c937f752682ddd28, type: 3}
+    - target: {fileID: 3418050657623505172, guid: fbed270ab283af34c9d9704979d1316e, type: 3}
+      propertyPath: numberOfPoints
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418050657623505172, guid: fbed270ab283af34c9d9704979d1316e, type: 3}
+      propertyPath: spaceBetweenPoints
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 3418050657623505173, guid: fbed270ab283af34c9d9704979d1316e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
