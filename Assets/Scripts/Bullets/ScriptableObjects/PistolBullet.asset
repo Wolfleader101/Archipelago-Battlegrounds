@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c1f85e6ada41cb87339b109270d79e, type: 3}
   m_Name: PistolBullet
   m_EditorClassIdentifier: 
-  speed: 23
+  speed: 100
   damage: 15

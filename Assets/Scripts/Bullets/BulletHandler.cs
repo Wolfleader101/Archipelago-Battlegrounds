@@ -6,21 +6,24 @@ using UnityEngine;
 public class BulletHandler : MonoBehaviour
 {
     [SerializeField] private BaseBullet bullet;
-    
+    public BaseBullet Bullet => bullet;
+
     private Rigidbody2D rb;
+    
+    
     
     //public BaseEntity owner;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * bullet.Speed;
+        // rb.velocity = transform.right * bullet.Speed;
     }
 
     private void Update()
     {
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)

@@ -27,6 +27,7 @@ public class EntityTargeting : MonoBehaviour
     void Start()
     {
         weapon = this.GetComponentInChildren<WeaponHandler>();
+        
     }
 
     public void FixedUpdate()

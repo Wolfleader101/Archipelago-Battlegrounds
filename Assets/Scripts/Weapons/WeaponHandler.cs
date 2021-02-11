@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 #pragma warning disable 0649
 public class WeaponHandler : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class WeaponHandler : MonoBehaviour
 
     public Transform firePoint;
 
+    public float customYGravity;
     public GameObject point;
     private GameObject[] points;
     public int numberOfPoints;
@@ -16,21 +19,25 @@ public class WeaponHandler : MonoBehaviour
 
     public EntityTargeting targeting;
     private Vector2 direction;
-    
+
     private int _currentAmmo = 0;
     private float _currentCooldown;
+
+    private float bulletSpawnedTime;
+    private float bulletTravelTime;
+    public float totalTime;
 
     // Start is called before the first frame update
     void Start()
     {
         _currentAmmo = weapon.AmmoCapacity;
         _currentCooldown = weapon.FireRate;
-
         points = new GameObject[numberOfPoints];
         for (int i = 0; i < numberOfPoints; i++)
         {
             points[i] = Instantiate(point, firePoint.position, quaternion.identity);
         }
+        
     }
 
     // Update is called once per frame
@@ -38,6 +45,7 @@ public class WeaponHandler : MonoBehaviour
     {
       //  Shoot();
       Vector2 gunPosition = transform.position;
+      bulletTravelTime = Time.time - bulletSpawnedTime;
       direction = (Vector2) targeting.Target.position - gunPosition;
       for (int i = 0; i < numberOfPoints; i++)
       {
@@ -48,20 +56,37 @@ public class WeaponHandler : MonoBehaviour
     public void Shoot()
     {
         Vector3 pos = firePoint.position;
-
+        
         if (_currentCooldown > 0)
         {
             _currentCooldown -= Time.deltaTime;
-
         }
         else if (_currentCooldown <= 0)
         {
             GameObject newBullet = Instantiate(weapon.BulletPrefab, pos, firePoint.rotation);
-            //newBullet.owner = this.gameObject.GetComponent<>();
-            _currentCooldown = weapon.FireRate;
+            StartCoroutine(MoveBullet(newBullet.transform));
+            
+            
+             // Rigidbody2D bullet_rb = newBullet.GetComponent<Rigidbody2D>();
+             // BulletHandler bullet_handler = newBullet.GetComponent<BulletHandler>();
+             // bullet_rb.AddRelativeForce(direction * bullet_handler.Bullet.Speed);
+             
+             _currentCooldown = weapon.FireRate;
         }
     }
-
+    
+    private IEnumerator MoveBullet (Transform bullet)
+    {
+        float spawnTime = Time.time;
+        float travelTime = 0;
+        while (bullet != null)
+        {
+            travelTime = Time.time - spawnTime;
+            bullet.position = PointPosition (travelTime / totalTime);
+            yield return null;
+        }
+    }
+    
     Vector2 PointPosition(float time)
     {
         Vector2 position = (Vector2) firePoint.position +
